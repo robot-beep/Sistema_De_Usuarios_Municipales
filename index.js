@@ -13,6 +13,8 @@ mongoose.connect(keyBD)
     });
 
 
+
+
 app.use('/api', rutas)
 
 app.listen(3000, function(req, res ){
