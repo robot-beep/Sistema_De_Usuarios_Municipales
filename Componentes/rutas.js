@@ -1,11 +1,13 @@
 var express = require('express');
-var employee = require('./usuario/employee.network');
+var employee = require('./employee/employee.network');
 var admin = require('./admin/admin.network');
+var user = require('./usuario/usuario.network')
 
 
 const rutas = [
     employee,
-    admin
+    admin, 
+    user
 ];
 
 module.exports = rutas; 
