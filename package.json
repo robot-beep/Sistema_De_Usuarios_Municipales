@@ -17,13 +17,5 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/robot-beep/Sistema_De_Usuarios_Municipales.git"
-  },
-  "bugs": {
-    "url": "https://github.com/robot-beep/Sistema_De_Usuarios_Municipales/issues"
-  },
-  "homepage": "https://github.com/robot-beep/Sistema_De_Usuarios_Municipales#readme"
+  }
 }

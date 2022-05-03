@@ -17,7 +17,6 @@ mongoose.connect(keyBD)
 
 //middleware 
 
-//token verification
 
 app.use(express.json());
 
