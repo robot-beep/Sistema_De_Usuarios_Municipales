@@ -1,4 +1,4 @@
-const controller = require("./usuarioMunicipality.controller")
+const controller = require("./userMunicipality.controller")
 const express = require('express')
 const router = express.Router();
 const middleware = require('../../middleware')
@@ -7,29 +7,42 @@ const middleware = require('../../middleware')
 
 
 router.get('/user/all', middleware.verifyToken,async (req, res)=>{
-    //res.send("funciona")
-    //console.log(await (controller.getUserByReason("Rotura de matriz en la calle falsa 123")));
-    res.send((await (controller.getUsersMunicipality())));
+    try {res.send((await (controller.getUsersMunicipality())));}
+    catch(error){
+        res.send(error.message,500)
+    };
 });
 
 router.get('/user/reason/:reason',middleware.verifyToken, async (req, res)=>{
     const reason = req.params["reason"];
     res.send(await controller.getUserByReason(reason));
+    try {}catch(error){
+        res.send(error.message,500)
+    };
 });
 
 router.get('/user/id/:id',middleware.verifyToken, async (req, res)=>{
     const id = req.params["id"];
     res.send(await controller.getUserById(id));
+    try {}catch(error){
+        res.send(error.message,500)
+    };
 });
 
 router.get('/user/department/:department',middleware.verifyToken, async (req, res)=>{
     const department = req.params["department"];
-    res.send(await controller.getUserByDepartment(department));
+    try {res.send(await controller.getUserByDepartment(department))}
+    catch(error){
+        res.send(error.message,500)
+    };
 });
 
 router.get('/user/rut/:rut',middleware.verifyToken, async (req, res)=>{
     const rut = req.params["rut"];
-    res.send(await controller.getUserByRut(rut));
+    try {res.send(await controller.getUserByRut(rut))}
+    catch(error){
+        res.send(error.message,500)
+    };
 });
 
 
@@ -37,15 +50,30 @@ router.post('/user/create',middleware.verifyToken, async (req, res)=>{
     console.log(req.body["reason"]);
     const user = req.body;
     console.log(user);
-    res.send(await controller.createUser(user));
+    try {res.send(await controller.createUser(user));
+    }catch(error){
+        res.send(error.message,500);
+    };
+
     
 });
 
 router.patch('/user/:id',middleware.verifyToken,async (req,res)=>{
     const id = req.params["id"];
     const user = req.body;
-    res.send(await controller.updaterUser(id, user))
-
+    try {res.send(await controller.updaterUser(id, user))}catch(error){
+        res.send(error.message,500)
+    };  
 });
+
+
+
+router.delete('/user/:id',middleware.verifyToken,async (req,res)=>{
+    const id = req.params["id"];
+    try {res.send(await controller.deleteUser(id))}catch(error){
+        res.send(error.message,500);
+    };  
+});
+
 
 module.exports =  router;

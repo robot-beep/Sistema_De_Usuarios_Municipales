@@ -29,6 +29,10 @@ async function updaterUser(id, user){
     return userMunicipality.findOneAndUpdate({_id: id}, user,{new: true})
 }
 
+async function deleteUser(id){
+    return userMunicipality.findByIdAndRemove({_id: id})
+}
+
 module.exports.getUsersMunicipality = getUsersMunicipality;
 module.exports.getUserById = getUserById;
 module.exports.getUserByReason = getUserByReason;
@@ -36,3 +40,4 @@ module.exports.getUserByDepartment = getUserByDepartment;
 module.exports.getUserByRut = getUserByRut;
 module.exports.createUser = createUser;
 module.exports.updaterUser = updaterUser;
+module.exports.deleteUser = deleteUser;
