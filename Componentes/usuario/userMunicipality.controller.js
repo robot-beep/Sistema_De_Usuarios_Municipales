@@ -1,10 +1,11 @@
+const { del } = require("express/lib/application");
 const repository = require("./userMunicipality.repository");
 
 async function getUserByReason(Reason){
    return repository.getUserByReason(Reason);
 }
 function getUsersMunicipality(){
-   return repository.getUsersMunicipality()
+   return repository.getUsersMunicipality();
 };
 
 function getUserById(id){
@@ -25,11 +26,15 @@ async function getUserByRut(rut){
 }
 
 async function createUser(user){
-   return repository.createUser(user)
+   return repository.createUser(user);
 }
 
 async function updaterUser(id, user){
-   return repository.updaterUser(id, user)
+   return repository.updaterUser(id, user);
+}
+
+async function deleteUser(id){
+   return repository.deleteUser(id);
 }
 
 module.exports.getUsersMunicipality = getUsersMunicipality;
@@ -39,3 +44,4 @@ module.exports.getUserByDepartment = getUserByDepartment;
 module.exports.getUserByRut = getUserByRut;
 module.exports.createUser = createUser;
 module.exports.updaterUser = updaterUser;
+module.exports.deleteUser = deleteUser;
