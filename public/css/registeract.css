@@ -1,0 +1,126 @@
+body{
+    background-color: #E9E9E9;
+    width: 100vw;
+    height: 100%;
+    overflow: hidden;
+    padding: 90px 20px 0;
+    
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+}   
+
+.title{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    padding-left: 100px;    
+
+
+
+}
+
+.title h1{
+    color: #025f8d;
+
+}
+
+.form-user{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+form {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputss{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    
+}
+
+
+
+
+.inputss-1{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.i-1{
+    height: 16% ;
+    width: 250px ;
+    display: flex;
+    flex-direction: column;
+}
+
+.i-1 input{
+    width: 250px;
+    height: 50%;
+
+}
+
+
+
+.i-2{
+    height: 20% ;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+}
+
+.i-2 input {
+    width: 250px;
+    height: 50%;
+}
+
+.i-2 textarea{
+    width: 250px;
+    
+    height: 60%;
+    resize: none;
+}
+
+
+.i-2 select{
+    width: 250px;
+    height: 50%;
+    background-color: #fffafa;
+}
+
+.buttons{
+    height: 40%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+.buttons input{
+    height: 30px;
+    width: 200px;
+    margin: 10px;
+}
