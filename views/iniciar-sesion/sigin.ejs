@@ -1,0 +1,33 @@
+<%- include('./partials/_header'); -%>
+<head>
+    <link rel="stylesheet" href="/css/signin.css">
+    <title>signin</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="tittle">
+           <h1>Iniciar Sesion</h1>
+           <p>utiliza tu cuenta asignada</p>
+        </div>
+        <div class="form-user">
+            <form action="/signin" method="POST">
+               <div class="inputss">
+         
+                   <input placeholder="RUT" type="text" name="rut"> 
+                   <input placeholder="password" type="password" name="password"> 
+
+
+               </div>
+               <div class="buttons">
+                   <input type="submit" value="Guardar">
+                   <input type="reset" value="Eliminar">
+
+               </div>
+    
+            </form>
+
+
+
+        </div>
+   </body>
