@@ -7,17 +7,9 @@ const jwt = require('jsonwebtoken');
 
 
 
-router.get('/admin/', (req, res) => {
-
-   res.render("iniciar-sesion/signin")
+router.get('/admin/', middleware.verifyToken, (req, res) => {
+   res.send("funciona")
 });
-
-router.get('/admin/1', (req, res) => {
-
-   res.render("RegisterAct/register")
-});
-
-
 
 router.post('/admin/prueba', async (req, res) => {
    var email = req.body.email;
@@ -57,7 +49,30 @@ router.post('/admin/signup', async (req, res) => {
    }   
 })
 
+
 //inicio de sesión 
+
+router.post('/admin/login/', async (req, res) => {
+   const rut = req.body.rut;
+   const password = req.body.password;
+   let permiso =  await controller.login(rut, password);
+   console.log(permiso)
+   if(permiso == "si"){
+
+      jwt.sign(rut, 'secret_key', (err, token) => {
+         if (err) {
+            res.status(400).send({ msg: 'Error' })
+         }
+         else {
+            res.send({ msg: 'success', token: token })
+         }
+      })
+
+   }else{
+      res.send("el usuario ya existe")
+   } 
+   
+});
 
 //cierre de sesión 
 
