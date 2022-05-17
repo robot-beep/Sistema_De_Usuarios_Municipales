@@ -6,9 +6,18 @@ const middleware = require('../../middleware');
 const jwt = require('jsonwebtoken');
 
 
-router.get('/admin/', middleware.verifyToken, (req, res) => {
-   res.send("funciona")
+
+router.get('/admin/', (req, res) => {
+
+   res.render("iniciar-sesion/signin")
 });
+
+router.get('/admin/1', (req, res) => {
+
+   res.render("RegisterAct/register")
+});
+
+
 
 router.post('/admin/prueba', async (req, res) => {
    var email = req.body.email;

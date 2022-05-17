@@ -3,6 +3,7 @@ body{
     width: 100vw;
     height: 100%;
     overflow: hidden;
+    padding: 90px 20px 0;
 }
 .container{
     width: 100%;
@@ -36,7 +37,7 @@ body{
 }
 
 form {
-    height: 100%;
+    height: 90%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -45,7 +46,7 @@ form {
 
 .inputss{
     width: 100%;
-    height: 50%;
+    height: 65%;
     display: flex;
     flex-direction: column;
 
@@ -63,7 +64,7 @@ form {
 }
 
 .buttons{
-    height: 50%;
+    height: 35%;
     width: 100%;
     display: flex;
     flex-direction: row;
