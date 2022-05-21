@@ -13,7 +13,7 @@ const keyBD = "mongodb+srv://QueEquipo:Linces@type3cartagena.t9gnz.mongodb.net/m
 
 
 
-y
+
 mongoose.connect(keyBD)
     .then(() => {
         console.log("DataBase Connected")
@@ -32,7 +32,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended:false}));
 app.use(methodOverride('_method'));
 app.use(express.json());
-
 app.use('/api', rutas);
 
 

@@ -6,10 +6,14 @@ const middleware = require('../../middleware');
 const jwt = require('jsonwebtoken');
 
 
+router.get('/admin/',(req, res) => {
+   res.render("iniciar-sesion/signin")
 
-router.get('/admin/', middleware.verifyToken, (req, res) => {
-   res.send("funciona")
 });
+
+
+
+
 
 router.post('/admin/prueba', async (req, res) => {
    var email = req.body.email;
@@ -40,7 +44,9 @@ router.post('/admin/signup', async (req, res) => {
             res.status(400).send({ msg: 'Error' })
          }
          else {
+            res.render('RegisterAct/register',{token: token})
             res.send({ msg: 'success', token: token })
+
          }
       })
 
@@ -51,12 +57,11 @@ router.post('/admin/signup', async (req, res) => {
 
 
 //inicio de sesión 
-
-router.post('/admin/login/', async (req, res) => {
+router.post('/admin/signin/', async (req, res) => {
    const rut = req.body.rut;
    const password = req.body.password;
    let permiso =  await controller.login(rut, password);
-   console.log(permiso)
+   console.log(req.body)
    if(permiso == "si"){
 
       jwt.sign(rut, 'secret_key', (err, token) => {
@@ -64,7 +69,8 @@ router.post('/admin/login/', async (req, res) => {
             res.status(400).send({ msg: 'Error' })
          }
          else {
-            res.send({ msg: 'success', token: token })
+            //res.send({ msg: 'success', token: token })
+            res.render("registerAct/Register")
          }
       })
 
@@ -73,6 +79,9 @@ router.post('/admin/login/', async (req, res) => {
    } 
    
 });
+
+
+
 
 //cierre de sesión 
 
