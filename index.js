@@ -14,6 +14,7 @@ const keyBD = "mongodb+srv://QueEquipo:Linces@type3cartagena.t9gnz.mongodb.net/m
 
 
 
+
 mongoose.connect(keyBD)
     .then(() => {
         console.log("DataBase Connected")
