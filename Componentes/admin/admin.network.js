@@ -56,7 +56,6 @@ router.post('/admin/login/', async (req, res) => {
    const rut = req.body.rut;
    const password = req.body.password;
    let permiso =  await controller.login(rut, password);
-   console.log(permiso)
    if(permiso == "si"){
 
       jwt.sign(rut, 'secret_key', (err, token) => {
@@ -64,7 +63,8 @@ router.post('/admin/login/', async (req, res) => {
             res.status(400).send({ msg: 'Error' })
          }
          else {
-            res.send({ msg: 'success', token: token })
+            res.cookie('token', token, {maxAge : 60000 * 240} );
+            res.send({ msg: 'success', token: token });    
          }
       })
 
@@ -73,6 +73,21 @@ router.post('/admin/login/', async (req, res) => {
    } 
    
 });
+
+//cerrar sesion
+
+router.put("/admin/logout", middleware.verifyToken , function (req, res) {
+
+   const authHeader = req.headers["token"];
+   jwt.sign(authHeader, "token", { expiresIn: 1 } , (logout, err) => {
+      if (logout) {
+         res.send({msg : 'Has sido desconectado' });
+      } else {
+         res.send({msg:'Error'});
+      }
+   });
+});
+
 
 //cierre de sesión 
 
