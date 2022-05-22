@@ -1,7 +1,7 @@
 const userMunicipality = require("./userMunicipality.schema");
 
 function getUsersMunicipality(){
-    return userMunicipality.find()
+    return userMunicipality.find().limit(200)
 };
 
 function getUserById(id){

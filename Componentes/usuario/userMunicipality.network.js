@@ -4,7 +4,19 @@ const router = express.Router();
 const middleware = require('../../middleware')
 
 
+//mostrar usuarios
 
+router.get('/mostrar/', async (req,res) =>{
+    const  usuarios = await  controller.getUsersMunicipality();
+    res.render("tabla_registro/tabla", {
+        usuarios: usuarios
+    });
+});
+
+router.get('/register/',(req, res) => {
+    res.render("RegisterAct/register")
+ });
+ 
 
 router.get('/user/all', middleware.verifyToken,async (req, res)=>{
     try {res.send((await (controller.getUsersMunicipality())));}
@@ -67,11 +79,16 @@ router.patch('/user/:id',middleware.verifyToken,async (req,res)=>{
 });
 
 
-
-router.delete('/user/:id',middleware.verifyToken,async (req,res)=>{
+//borrar usuario
+router.get('/user/:id',async (req,res)=>{
     const id = req.params["id"];
-    try {res.send(await controller.deleteUser(id))}catch(error){
+    try {
+        await controller.deleteUser(id);
+        res.redirect("/api/mostrar/");}
+
+    catch(error){
         res.send(error.message,500);
+    
     };  
 });
 
