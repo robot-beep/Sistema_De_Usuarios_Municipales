@@ -1,4 +1,3 @@
-
 const express = require('express');
 const router = express.Router();
 var controller = require('./admin.controller');
@@ -6,10 +5,14 @@ const middleware = require('../../middleware');
 const jwt = require('jsonwebtoken');
 
 
-
-router.get('/admin/', middleware.verifyToken, (req, res) => {
-   res.send("funciona")
+router.get('/admin/',(req, res) => {
+   res.render("iniciar-sesion/signin")
 });
+
+
+
+
+
 
 router.post('/admin/prueba', async (req, res) => {
    var email = req.body.email;
@@ -40,7 +43,9 @@ router.post('/admin/signup', async (req, res) => {
             res.status(400).send({ msg: 'Error' })
          }
          else {
+            res.render('RegisterAct/register',{token: token})
             res.send({ msg: 'success', token: token })
+
          }
       })
 
@@ -51,11 +56,13 @@ router.post('/admin/signup', async (req, res) => {
 
 
 //inicio de sesión 
-
-router.post('/admin/login/', async (req, res) => {
+router.post('/admin/signin/', async (req, res) => {
    const rut = req.body.rut;
    const password = req.body.password;
    let permiso =  await controller.login(rut, password);
+   console.log(req.body)
+
+
    if(permiso == "si"){
 
       jwt.sign(rut, 'secret_key', (err, token) => {
@@ -63,8 +70,14 @@ router.post('/admin/login/', async (req, res) => {
             res.status(400).send({ msg: 'Error' })
          }
          else {
+
+            res.cookie("token",token,{maxAge: 100000})
+            res.render("registerAct/Register",{token : token})
+            
+
             res.cookie('token', token, {maxAge : 60000 * 240} );
             res.send({ msg: 'success', token: token });    
+
          }
       })
 
@@ -73,6 +86,8 @@ router.post('/admin/login/', async (req, res) => {
    } 
    
 });
+
+
 
 //cerrar sesion
 
@@ -87,6 +102,7 @@ router.put("/admin/logout", middleware.verifyToken , function (req, res) {
       }
    });
 });
+
 
 
 //cierre de sesión 
