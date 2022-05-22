@@ -6,8 +6,10 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser')
 
 
+
 router.get('/admin/', (req, res) => {
    res.render("iniciar-sesion/signin")
+
 });
 
 router.get('admin/admin', async (req, res) => {
