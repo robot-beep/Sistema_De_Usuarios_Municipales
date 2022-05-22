@@ -1,4 +1,3 @@
-
 const express = require('express');
 const router = express.Router();
 var controller = require('./admin.controller');
@@ -8,8 +7,8 @@ const jwt = require('jsonwebtoken');
 
 router.get('/admin/',(req, res) => {
    res.render("iniciar-sesion/signin")
-
 });
+
 
 
 
@@ -69,8 +68,9 @@ router.post('/admin/signin/', async (req, res) => {
             res.status(400).send({ msg: 'Error' })
          }
          else {
-            //res.send({ msg: 'success', token: token })
-            res.render("registerAct/Register")
+            res.cookie("token",token,{maxAge: 100000})
+            res.render("registerAct/Register",{token : token})
+            
          }
       })
 
