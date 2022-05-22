@@ -28,6 +28,21 @@ const repository = require('./employee.repository');
  async function deleteEmployee(id){
     return repository.deleteEmployee(id);
  }
+
+ async function login(rut, password){
+   const employee = await repository.getEmployeeByRut(rut)
+   if(employee == []){
+       return "usuario o clave incorrecta";
+   }else{
+       if(employee[0].password == password){
+           return "si";
+       
+       }else{
+           return "usuario o clave incorrecta";
+       }
+   }
+
+}
  
  module.exports.getEmployees = getEmployees;
  module.exports.getEmployeeById = getEmployeeById;
@@ -36,4 +51,5 @@ const repository = require('./employee.repository');
  module.exports.createEmployee = createEmployee;
  module.exports.updaterEmployee = updaterEmployee;
  module.exports.deleteEmployee = deleteEmployee;
+ module.exports.login = login; 
  

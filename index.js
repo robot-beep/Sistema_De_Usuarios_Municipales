@@ -9,6 +9,7 @@ const mongoose = require("mongoose")
 const jwt = require('jsonwebtoken')
 var bodyParser = require('body-parser');
 const keyBD = "mongodb+srv://QueEquipo:Linces@type3cartagena.t9gnz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const cookieParser = require('cookie-parser');
 
 
 
@@ -34,7 +35,15 @@ app.use(express.urlencoded({extended:false}));
 app.use(methodOverride('_method'));
 app.use(express.json());
 app.use('/api', rutas);
+app.use(cookieParser());
 
+//default page
+app.get("*", (req, res) => {
+  
+    // Here user can also design an
+    // error page and render it 
+    res.render("iniciar-sesion/signin")
+  });
 
 //configuracion
 app.listen(3000, function (req, res) {

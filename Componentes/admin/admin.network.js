@@ -3,26 +3,17 @@ const router = express.Router();
 var controller = require('./admin.controller');
 const middleware = require('../../middleware');
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser')
 
 
-router.get('/admin/',(req, res) => {
+router.get('/admin/', (req, res) => {
    res.render("iniciar-sesion/signin")
 });
 
-
-
-
-
-
-router.post('/admin/prueba', async (req, res) => {
-   var email = req.body.email;
-   var admin = await controller.getAdminByEmail(email)
-   res.send(email);
-   if (admin == ""){
-      console.log("admin era null")
-   }
-   
+router.get('admin/admin', async (req, res) => {
+   res.send("funciona")
 })
+
 
 //registrarse 
 router.post('/admin/signup', async (req, res) => {
@@ -35,7 +26,7 @@ router.post('/admin/signup', async (req, res) => {
    var testEmail = await controller.getAdminByEmail(email);
    var testRut = await controller.getAdminByRut(rut);
 
-   if((testEmail == "") && (testRut == "")){
+   if ((testEmail == "") && (testRut == "")) {
       console.log(await controller.createAdmin(admin));
 
       jwt.sign(rut, 'secret_key', (err, token) => {
@@ -43,15 +34,15 @@ router.post('/admin/signup', async (req, res) => {
             res.status(400).send({ msg: 'Error' })
          }
          else {
-            res.render('RegisterAct/register',{token: token})
+            res.render('RegisterAct/register', { token: token })
             res.send({ msg: 'success', token: token })
 
          }
       })
 
-   }else{
+   } else {
       res.send("el usuario ya existe")
-   }   
+   }
 })
 
 
@@ -59,54 +50,51 @@ router.post('/admin/signup', async (req, res) => {
 router.post('/admin/signin/', async (req, res) => {
    const rut = req.body.rut;
    const password = req.body.password;
-   let permiso =  await controller.login(rut, password);
+   let permiso = await controller.login(rut, password);
    console.log(req.body)
 
 
-   if(permiso == "si"){
+   if (permiso == "si") {
 
       jwt.sign(rut, 'secret_key', (err, token) => {
          if (err) {
             res.status(400).send({ msg: 'Error' })
          }
          else {
+            res.cookie("token", token, {
+               maxAge: 900000*90000,
+               secure: true,
+               httpOnly: false
+            })
+            res.render("iniciar-sesion/signin")
 
-            res.cookie("token",token,{maxAge: 100000})
-            res.render("registerAct/Register",{token : token})
-            
-
-            res.cookie('token', token, {maxAge : 60000 * 240} );
-            res.send({ msg: 'success', token: token });    
 
          }
       })
 
-   }else{
-      res.send("el usuario ya existe")
-   } 
-   
+   } else {
+      res.send("el usuario no existe")
+   }
 });
-
-
 
 //cerrar sesion
 
-router.put("/admin/logout", middleware.verifyToken , function (req, res) {
-
-   const authHeader = req.headers["token"];
-   jwt.sign(authHeader, "token", { expiresIn: 1 } , (logout, err) => {
+router.post("/admin/logout", middleware.verifyToken, function (req, res) {
+   let token = "dummytoken"
+   jwt.sign( token, "token", { expiresIn: 1 }, (logout, err) => {
       if (logout) {
-         res.send({msg : 'Has sido desconectado' });
+         res.cookie("token", token, {
+            maxAge: 900000*90000,
+            secure: true,
+            httpOnly: false
+         })
+         res.send({ msg: 'Has sido desconectado' });
+         
       } else {
-         res.send({msg:'Error'});
+         res.send({ msg: 'Error' });
       }
    });
 });
-
-
-
-//cierre de sesión 
-
 
 
 module.exports = router;

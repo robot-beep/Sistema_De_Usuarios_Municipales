@@ -6,14 +6,14 @@ const middleware = require('../../middleware')
 
 
 
-router.get('/user/all', middleware.verifyToken,async (req, res)=>{
+router.get('/user/all', middleware.verifyTokenEmployee,async (req, res)=>{
     try {res.send((await (controller.getUsersMunicipality())));}
     catch(error){
         res.send(error.message,500)
     };
 });
 
-router.get('/user/reason/:reason',middleware.verifyToken, async (req, res)=>{
+router.get('/user/reason/:reason',middleware.verifyTokenEmployee, async (req, res)=>{
     const reason = req.params["reason"];
     res.send(await controller.getUserByReason(reason));
     try {}catch(error){
@@ -21,7 +21,7 @@ router.get('/user/reason/:reason',middleware.verifyToken, async (req, res)=>{
     };
 });
 
-router.get('/user/id/:id',middleware.verifyToken, async (req, res)=>{
+router.get('/user/id/:id',middleware.verifyTokenEmployee, async (req, res)=>{
     const id = req.params["id"];
     res.send(await controller.getUserById(id));
     try {}catch(error){
@@ -29,7 +29,7 @@ router.get('/user/id/:id',middleware.verifyToken, async (req, res)=>{
     };
 });
 
-router.get('/user/department/:department',middleware.verifyToken, async (req, res)=>{
+router.get('/user/department/:department',middleware.verifyTokenEmployee, async (req, res)=>{
     const department = req.params["department"];
     try {res.send(await controller.getUserByDepartment(department))}
     catch(error){
@@ -37,7 +37,7 @@ router.get('/user/department/:department',middleware.verifyToken, async (req, re
     };
 });
 
-router.get('/user/rut/:rut',middleware.verifyToken, async (req, res)=>{
+router.get('/user/rut/:rut',middleware.verifyTokenEmployee, async (req, res)=>{
     const rut = req.params["rut"];
     try {res.send(await controller.getUserByRut(rut))}
     catch(error){
@@ -46,7 +46,7 @@ router.get('/user/rut/:rut',middleware.verifyToken, async (req, res)=>{
 });
 
 
-router.post('/user/create',middleware.verifyToken, async (req, res)=>{
+router.post('/user/create',middleware.verifyTokenEmployee, async (req, res)=>{
     console.log(req.body["reason"]);
     const user = req.body;
     console.log(user);
@@ -58,7 +58,7 @@ router.post('/user/create',middleware.verifyToken, async (req, res)=>{
     
 });
 
-router.patch('/user/:id',middleware.verifyToken,async (req,res)=>{
+router.patch('/user/:id',middleware.verifyTokenEmployee,async (req,res)=>{
     const id = req.params["id"];
     const user = req.body;
     try {res.send(await controller.updaterUser(id, user))}catch(error){
@@ -68,7 +68,7 @@ router.patch('/user/:id',middleware.verifyToken,async (req,res)=>{
 
 
 
-router.delete('/user/:id',middleware.verifyToken,async (req,res)=>{
+router.delete('/user/:id',middleware.verifyTokenEmployee,async (req,res)=>{
     const id = req.params["id"];
     try {res.send(await controller.deleteUser(id))}catch(error){
         res.send(error.message,500);
