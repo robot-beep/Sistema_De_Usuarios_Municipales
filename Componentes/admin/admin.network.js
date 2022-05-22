@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 
 
 router.get('/admin/',(req, res) => {
-   res.render("iniciar-sesion/signin")
+   res.render("RegisterAct/register")
 });
 
 
