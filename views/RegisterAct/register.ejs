@@ -11,35 +11,31 @@
         <h1>Registro de actividad</h1> 
      </div> 
      <div class="form-user">
-        <form method="">
+        <form action="/api/user/create" method="POST">
            <div class="inputss">
    
    
                <div class="inputss-1">
                
                    <div class="i-1">
-                       <label> nombre </label>
+                       <label> Nombre </label>
                        <input placeholder="Nombre" type="text" name="name">
                    </div>
                    <div class="i-1">
-                       <label> nombre </label>
+                       <label> Apellido </label>
                        <input placeholder="Apellido Paterno" type="text" name="lastName"> 
                    </div>
                    <div class="i-1">
-                       <label> nombre </label>
-                       <input placeholder="Apellido Materno" type="text" name="lasName"> 
-                   </div>
-                   <div class="i-1">
-                       <label> nombre </label>
+                       <label> Rut </label>
                        <input placeholder="RUT" type="text" name="rut"> 
                    </div>
                    <div class="i-1">
-                       <label> nombre </label>
+                       <label> Correo </label>
                        <input placeholder="mail" type="mail" name="email"> 
                    </div>
                    <div class="i-1">
-                       <label> nombre </label>
-                       <input placeholder="telefono" type="tel" name="telefono">
+                       <label> Telefono </label>
+                       <input placeholder="telefono" type="tel" name="mobileNumber">
                    </div>
            </div>
               
@@ -78,22 +74,28 @@
                    <div class="i-2">
                        <label>Calle </label>
                        <input placeholder="Calle" type="text" name="calle"> 
-                   </div>
+                    </div>
+                    
+                    <div class="i-2">
+                     <label>Comentario</label>
+                     <textarea  name="comment"> </textarea>
+                      </div>
                    
                    <div class="i-2">
                        <label>Descripcion</label>
-                       <textarea  name="descripcion"> </textarea>
+                       <textarea  name="reason"> </textarea>
                    </div> 
         
                    <div class="i-2">
                        <label>Departamento</label>
-                       <select placeholder="Despartamento"  name="Departamento"> 
+                       <select placeholder="Departamento"  name="department"> 
                            <option>Dep.Finanzas</option>
                            <option>Dep.Bienestar</option>
                            <option>Dep.A</option>
                            <option>Dep. rArenas</option>
                        </select>
                    </div>
+                   
                   
    
                </div>

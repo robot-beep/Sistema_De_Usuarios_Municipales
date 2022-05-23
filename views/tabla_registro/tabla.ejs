@@ -7,8 +7,15 @@
 </head>
 
 <body>
+
+
     <div class="tableformat">
         <table>
+            <form action="/api/user/rut" method="GET">
+               <div><input name="rut" type="search" value="Buscar" />
+            </div>   
+            </form>
+            </div>
             <tr>
                 <th>id</th>
                 <th>Nombre</th>
@@ -19,7 +26,6 @@
                 <th>Departamento</th>
                 <th>Telefono/Celular</th>
                 <th>Motivo</th>
-                <th>Direccion</th>
                 <th>Comentario</th>
                 
                 
@@ -30,19 +36,18 @@
                     <tr>
                         <td><%= i + 1 %></td>
                         <td><%= usuarios[i].name %></td>
-                        <td><%= usuarios[i].lastname %></td>
+                        <td><%= usuarios[i].lastName %></td>
                         <td><%= usuarios[i].rut %></td>
                         <td><%= usuarios[i].email %></td>
-                        <td><%= usuarios[i].address %></td>
+                        <td><%= usuarios[i].calle %></td>
                         <td><%= usuarios[i].department %></td>
                         <td><%= usuarios[i].mobileNumber %></td>
-                        <td><%= usuarios[i].phoneNumber %></td>
                         <td><%= usuarios[i].reason %></td>
                         <td><%= usuarios[i].comment %></td>
                         <td><form method="get" action="/api/user/<%= usuarios[i]._id%>"> <button type="submit">Delete</button> </form></td>
 
+
                     
-                        
                     </tr> 
                 <% } %>   
             </tbody>
