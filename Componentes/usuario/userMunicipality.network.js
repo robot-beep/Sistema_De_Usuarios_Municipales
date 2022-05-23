@@ -33,7 +33,7 @@ router.get('/user/reason/:reason',middleware.verifyToken, async (req, res)=>{
     };
 });
 
-router.get('/user/id/:id',middleware.verifyToken, async (req, res)=>{
+router.get('/user/id/:id', async (req, res)=>{
     const id = req.params["id"];
     res.send(await controller.getUserById(id));
     try {}catch(error){
@@ -41,7 +41,7 @@ router.get('/user/id/:id',middleware.verifyToken, async (req, res)=>{
     };
 });
 
-router.get('/user/department/:department',middleware.verifyToken, async (req, res)=>{
+router.get('/user/department/:department', async (req, res)=>{
     const department = req.params["department"];
     try {res.send(await controller.getUserByDepartment(department))}
     catch(error){
@@ -49,23 +49,37 @@ router.get('/user/department/:department',middleware.verifyToken, async (req, re
     };
 });
 
-router.get('/user/rut/:rut',middleware.verifyToken, async (req, res)=>{
-    const rut = req.params["rut"];
-    try {res.send(await controller.getUserByRut(rut))}
+router.get('/user/rut/', async (req, res) => {
+
+    
+
+    var rut = (req.query.rut)
+    
+    try {
+        const usuarios = (await controller.getUserByRut(rut))
+        res.render("tabla_registro/tabla", {
+            usuarios: usuarios
+        });
+    }
     catch(error){
         res.send(error.message,500)
     };
 });
 
 
-router.post('/user/create',middleware.verifyToken, async (req, res)=>{
+router.post('/user/create', async (req, res)=>{
     console.log(req.body["reason"]);
     const user = req.body;
     console.log(user);
-    try {res.send(await controller.createUser(user));
+    try {
+        (await controller.createUser(user));
+        const usuarios = await controller.getUsersMunicipality()
+        console.log(usuarios)
+        res.render("tabla_registro/tabla", { usuarios: usuarios });
     }catch(error){
         res.send(error.message,500);
     };
+
 
     
 });
@@ -86,8 +100,9 @@ router.get('/user/:id',async (req,res)=>{
         await controller.deleteUser(id);
         res.redirect("/api/mostrar/");}
 
-    catch(error){
-        res.send(error.message,500);
+    catch (error) {
+        res.status(500).send(error.message)
+
     
     };  
 });
