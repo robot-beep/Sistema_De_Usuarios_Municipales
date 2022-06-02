@@ -4,6 +4,13 @@ const controller = require("./employee.controller")
 const middleware = require('../../middleware')
 const jwt = require('jsonwebtoken');
 
+
+router.get('/employee/iniciar', (req, res) => {
+    res.render("iniciar-sesion/signinuser")
+ 
+ });
+
+
 router.get('/dummy', middleware.verifyTokenEmployee, async (req, res) => {
     console.log("lo haz logrado")
 })
@@ -116,7 +123,7 @@ router.post('/employee/login/', async (req, res) => {
                     secure: true,
                     httpOnly: false
                 })
-                res.render("iniciar-sesion/signin")
+                res.render("RegisterAct/register")
 
 
             }
