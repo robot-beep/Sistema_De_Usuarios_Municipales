@@ -3,9 +3,15 @@ const express = require('express')
 const router = express.Router();
 const middleware = require('../../middleware')
 
+//
+router.get('/user/iniciar', (req, res) => {
+    res.render("iniciar-sesion/signin")
+ 
+ });
+
+
 
 //mostrar usuarios
-
 router.get('/mostrar/', async (req,res) =>{
     const  usuarios = await  controller.getUsersMunicipality();
     res.render("tabla_registro/tabla", {
