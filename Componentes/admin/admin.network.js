@@ -68,7 +68,7 @@ router.post('/admin/signin/', async (req, res) => {
                secure: true,
                httpOnly: false
             })
-            res.render("RegisterAct/register")
+            res.redirect('/api/mostrar/')
 
 
          }

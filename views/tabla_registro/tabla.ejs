@@ -1,6 +1,6 @@
-<%- include('../partials/_header') %>
 <!DOCTYPE html>
 <html>
+    <%- include('../partials/_header') %>
 <head>
     <link rel="stylesheet" href="/css/registro.css" />
     <title>Document</title>
@@ -10,58 +10,60 @@
 
 
     <div class="tableformat">
-        <form action="/api/user/rut" method="GET">
-            <div><input name="rut" type="search" value="Buscar" /></div>   
-         </form>
-         <div class="tablex">
-            <table >
-                <tr>
-                    <th>id</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Rut</th>
-                    <th>E-mail</th>
-                    <th>domicilio</th>
-                    <th>Departamento</th>
-                    <th>Telefono/Celular</th>
-                    <th>Motivo</th>
-                    <th>Comentario</th>
-                    
-                    
-                </tr>
-                </thead>
-                <tbody>
-                    <% for(var i=0; i < usuarios.length; i++) { %>
-                        <tr>
-                            <td><%= i + 1 %></td>
-                            <td><%= usuarios[i].name %></td>
-                            <td><%= usuarios[i].lastName %></td>
-                            <td><%= usuarios[i].rut %></td>
-                            <td><%= usuarios[i].email %></td>
-                            <td><%= usuarios[i].calle %></td>
-                            <td><%= usuarios[i].department %></td>
-                            <td><%= usuarios[i].mobileNumber %></td>
-                            <td><%= usuarios[i].reason %></td>
-                            <td><%= usuarios[i].comment %></td>
-                            <td><form method="get" action="/api/user/<%= usuarios[i]._id%>"> <button type="submit">Delete</button> </form></td>
-    
-    
-                        
-                        </tr> 
-                    <% } %>   
-                </tbody>
-            </table>
-         </div>
-        
-    </div>
-    <div>
-        <form action=/api/register/ method="GET">
-            <input type="submit" value="Agregar usuario" />  
-        </form>
-      
-        
-    </div>
 
+        <div>
+            <form action=/api/register/ method="GET">
+                <input type="submit" value="Agregar usuario" />  
+            </form>
+        </div>
+        <table>
+            <form action="/api/user/rut" method="GET">
+               <div>
+                   <input name="rut" type="search" value="Buscar rut" />
+                </div>   
+            </form>
+            <div>
+                <form action="/api/mostrar" method="GET">
+                    <input type="submit" value="Volver">
+                </form>
+            </div>
+            <tr>
+                <th>id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Rut</th>
+                <th>E-mail</th>
+                <th>domicilio</th>
+                <th>Departamento</th>
+                <th>Telefono/Celular</th>
+                <th>Motivo</th>
+                <th>Comentario</th>
+                
+                
+            </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0; i < usuarios.length; i++) { %>
+                    <tr>
+                        <td><%= i + 1 %></td>
+                        <td><%= usuarios[i].name %></td>
+                        <td><%= usuarios[i].lastName %></td>
+                        <td><%= usuarios[i].rut %></td>
+                        <td><%= usuarios[i].email %></td>
+                        <td><%= usuarios[i].calle %></td>
+                        <td><%= usuarios[i].department %></td>
+                        <td><%= usuarios[i].mobileNumber %></td>
+                        <td><%= usuarios[i].reason %></td>
+                        <td><%= usuarios[i].comment %></td>
+                        <td><form method="get" action="/api/user/<%= usuarios[i]._id%>"> <button type="submit">Delete</button> </form></td>
+
+
+                    
+                    </tr> 
+                <% } %>   
+            </tbody>
+        </table>
+    </div>
 </body>
 
 </html>
