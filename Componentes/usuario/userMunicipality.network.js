@@ -54,9 +54,6 @@ router.get('/user/department/:department', async (req, res)=>{
 
 
 router.get('/user/rut/', async (req, res) => {
-
-    
-
     var rut = (req.query.rut)
     
     try {

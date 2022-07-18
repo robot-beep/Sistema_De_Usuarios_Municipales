@@ -18,11 +18,30 @@ body {
     flex-direction: column;
     margin-top: 120;
 }
+.ButtonSearch{
+    display: flex;
+    display: flex;
+    margin-top: 20px;
+    padding-left: 50px;
+}
+.ButtonTable{
+
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+    float: right;
+    padding-right: 152px;
+    
+}
+.PRUEBA{
+    float:right;
+    padding-right: 152px;
+}
 
 table{
     width: 100%;
     height: 89.5%;
-    margin-top: 100px;
+    margin-top: 5px;
     padding-left: 50px;
     padding-right: 50px;
 }

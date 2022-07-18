@@ -90,8 +90,8 @@ router.post("/admin/logout", middleware.verifyToken, function (req, res) {
             secure: true,
             httpOnly: false
          })
-         res.send({ msg: 'Has sido desconectado' });
-         
+         res.redirect("/admin/signin/");
+         //res.send({ msg: 'Has sido desconectado' });
       } else {
          res.send({ msg: 'Error' });
       }
