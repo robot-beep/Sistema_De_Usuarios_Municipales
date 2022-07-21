@@ -1,0 +1,55 @@
+<%- include('../partials/_header') %>
+
+
+<head>
+
+    <link rel="stylesheet" href="/css/signupt.css">
+</head>
+
+
+<div class="container">
+    <div class="title">
+        <h1>Registro de Nuevo Trabaador</h1> 
+     </div> 
+     <div class="form-user">
+        <form action="/api/employee/signup" method="POST">
+           <div class="inputss">
+   
+   
+               <div class="inputss-1">
+               
+                   <div class="i-1">
+                       <label> Nombre </label>
+                       <input placeholder="Nombre" type="text" name="name">
+                   </div>
+                   <div class="i-1">
+                       <label> Apellido </label>
+                       <input placeholder="Apellido Paterno" type="text" name="lastName"> 
+                   </div>
+                   <div class="i-1">
+                       <label> Rut </label>
+                       <input placeholder="RUT" type="text" name="ruts"> 
+                   </div>
+                   <div class="i-1">
+                       <label> Correo </label>
+                       <input placeholder="mail" type="email" name="emails"> 
+                   </div>
+                   <div class="i-1">
+                       <label> password </label>
+                       <input placeholder="password" type="password" name="passwords">
+                   </div>
+         
+           </div>
+           <div class="buttons">
+               <input type="submit" value="Guardar">
+               <input type="reset" value="Cancelar">
+   
+           </div>
+   
+        </form>
+   
+   
+   
+    </div>
+
+</div>

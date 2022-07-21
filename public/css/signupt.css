@@ -3,7 +3,7 @@ body{
     width: 100vw;
     height: 100%;
     overflow: hidden;
-    padding: 30px 20px 0;
+    padding: 90px 20px 0;
     
 }
 
@@ -20,7 +20,6 @@ body{
     height: 20%;
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
     padding-left: 100px;    
 
 
@@ -52,37 +51,47 @@ form {
     width: 100%;
     height: 60%;
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    
+}
+
+
+
+
+.inputss-1{
+    height: 100%;
+    width: 30%;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
 }
-    
-.i{
-    width: 250px;
-    height: 12%;
-    display: flex;
-     flex-direction: column;
-    }
-    
-.i input{
-    width: 250px;
-     height: 75%;
-       
- }
 
-.i select{
-        width: 250px;
-        height: 75%;
+.i-1{
+    height: 20% ;
+    width: 250px ;
+    display: flex;
+    flex-direction: column;
+   
     
-    
- }
+}
+
+.i-1 input{
+    width: 250px;
+    height: 50%;
+    align-items: center;
+    justify-content: center;
+
+}
+
 
 .buttons{
-    height: 40%;
-    width: 100%;
+
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
 
 }
