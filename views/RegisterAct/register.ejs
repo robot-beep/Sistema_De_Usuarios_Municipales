@@ -1,5 +1,4 @@
-
-
+<%- include('../partials/_header') %>
 <head>
 
     <link rel="stylesheet" href="/css/registeract.css">
@@ -19,15 +18,15 @@
                
                    <div class="i-1">
                        <label> Nombre </label>
-                       <input placeholder="Nombre" type="text" name="name">
+                       <input placeholder="Nombre" type="text" name="name" maxlength="30">
                    </div>
                    <div class="i-1">
                        <label> Apellido </label>
-                       <input placeholder="Apellido Paterno" type="text" name="lastName"> 
+                       <input placeholder="Apellido Paterno" type="text" name="lastName" maxlength="40"> 
                    </div>
                    <div class="i-1">
                        <label> Rut </label>
-                       <input placeholder="RUT" type="text" name="rut"> 
+                       <input placeholder="RUT" type="text" name="rut" > 
                    </div>
                    <div class="i-1">
                        <label> Correo </label>
@@ -68,22 +67,22 @@
                    </div>
                    <div class="i-2">
                        <label>Comuna</label>
-                       <input placeholder="Comuna" type="text" name="comuna">
+                       <input placeholder="Comuna" type="text" name="comuna" maxlength="30">
                    </div>
                    
                    <div class="i-2">
                        <label>Calle </label>
-                       <input placeholder="Calle" type="text" name="calle"> 
+                       <input placeholder="Calle" type="text" name="calle" maxlength="45"> 
                     </div>
                     
                     <div class="i-2">
                      <label>Comentario</label>
-                     <textarea  name="comment"> </textarea>
+                     <textarea  name="comment" maxlength="150" ></textarea>
                       </div>
                    
                    <div class="i-2">
                        <label>Descripcion</label>
-                       <textarea  name="reason"> </textarea>
+                       <textarea  name="reason" maxlength="150"> </textarea>
                    </div> 
         
                    <div class="i-2">
