@@ -8,9 +8,38 @@ router.get('/dummy', middleware.verifyTokenEmployee, async (req, res) => {
     console.log("lo haz logrado")
 })
 
+router.get('/signupt', async (req, res) => {  //middleware.verifyTokenEmployee
+    res.render("iniciar-sesion/signupt")
+})
+
 router.post('/employee/signup', middleware.verifyTokenEmployee, async (req, res) => {
     const employee = req.body;
+    const name = req.body;
+    const lastName = req.body;
+    const ruts = req.body.rut;
+    const emails = req.body.email;
+    const passwords = req.body.password;
+
+    var testRut = await controller.getEmployeeByRut(ruts);
     await controller.createEmployee(employee);
+    if  (testRut == "") {
+        console.log(await controller.createEmployee(employee));
+  
+        jwt.sign(ruts, 'secret_key', (err, token) => {
+           if (err) {
+              res.status(400).send({ msg: 'Error' })
+           }
+           else {
+              res.render('iniciar-sesion/signupt', { token: token })
+              res.send({ msg: 'success', token: token })
+  
+           }
+        })
+  
+     } else {
+        res.send("el usuario ya existe")
+     }
+
 
 })
 
@@ -19,6 +48,7 @@ router.get('/employee/all', middleware.verifyTokenEmployee, async (req, res) => 
     catch (error) {
         res.send(error.message, 500)
     };
+
 });
 
 
