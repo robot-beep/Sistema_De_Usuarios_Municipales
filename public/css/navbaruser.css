@@ -1,0 +1,45 @@
+.headers {
+    background-color: #006f23;
+    height: 80px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+
+}
+.title{
+    width: 80%;
+    
+}
+.logotipo{
+    display: flex;
+    font-size: 0 50px;
+    font-weight: bold;
+    padding: 0;
+
+}
+.logotipo h2{
+    margin: 20px;
+    font-size: 30;
+    line-height: 40px;
+    color: rgb(255, 254, 254);   
+}
+.logotipo img{
+    
+    margin-right: 10px;
+    height: 80px;
+
+}
+.logo{
+    font-size: 30px;
+    font-weight: bold;
+    padding: 0 40px;
+    line-height: 80px;
+
+}
