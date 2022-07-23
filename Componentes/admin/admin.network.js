@@ -12,6 +12,11 @@ router.get('/admin/', (req, res) => {
 
 });
 
+router.get('/changee', (req, res) => {
+   res.render("iniciar-sesion/signinuser")
+
+});
+
 router.get('admin/admin', async (req, res) => {
    res.send("funciona")
 })
