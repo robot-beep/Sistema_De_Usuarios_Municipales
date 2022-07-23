@@ -12,6 +12,10 @@ router.get('/signupt', async (req, res) => {  //middleware.verifyTokenEmployee
     res.render("iniciar-sesion/signupt")
 })
 
+router.get('/change/', async (req, res) => {  //middleware.verifyTokenEmployee
+    res.render("iniciar-sesion/signin")
+})
+
 router.post('/employee/signup', middleware.verifyTokenEmployee, async (req, res) => {
     const employee = req.body;
     const name = req.body;
