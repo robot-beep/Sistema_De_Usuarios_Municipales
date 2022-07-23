@@ -20,6 +20,7 @@ router.post('/employee/signup', middleware.verifyTokenEmployee, async (req, res)
     const emails = req.body.email;
     const passwords = req.body.password;
 
+;
     var testRut = await controller.getEmployeeByRut(ruts);
     await controller.createEmployee(employee);
     if  (testRut == "") {
