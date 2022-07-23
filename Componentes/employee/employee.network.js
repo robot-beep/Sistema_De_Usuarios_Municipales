@@ -151,7 +151,7 @@ router.post('/employee/login/', async (req, res) => {
                     secure: true,
                     httpOnly: false
                 })
-                res.render("iniciar-sesion/signin")
+                res.render("/api/register/")
 
 
             }
